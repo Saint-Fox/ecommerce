@@ -2,6 +2,19 @@
 {% load static %}
 
 {% block content %}
-    <h3>store</h3>
-    <img src=" {% static 'images/cart.png' %}" alt="">
+    <div class="row">
+        
+        {% for product in products %}
+        <div class="col-lg-4">
+            <img src="{{product.image_url}}" alt="" class="thumbnail">
+            <div class="box-element product">
+                <h3><strong>{{ product.name }}</strong></h3>
+                <hr>
+                <button class="btn btn-outline-secondary add-btn">Add to cart</button>
+                <a href="#" class="btn btn-outline-success">View</a>
+                <h4 class="price"><strong>$ {{product.price|floatformat:2}}</strong></h4>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock content %}
